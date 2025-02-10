@@ -4,23 +4,30 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 const ThirdScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      {/* Adicione a imagem */}
+      {/* Imagem na tela */}
       <Image
-        source={require('../views/img/thirdScreenImage.png')} // Caminho correto
+        source={require('../views/img/thirdScreenImage.png')} // Certifique-se do caminho correto
         style={styles.image}
       />
 
-      {/* Texto principal */}
+      {/* Título */}
       <Text style={styles.title}>LUKEMI'S</Text>
 
       {/* Botão de paciente */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PatientScreen')}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('PatientRegisterScreen')} // Direciona para a tela de registro do paciente
+      >
         <Text style={styles.buttonText}>Começar como paciente</Text>
       </TouchableOpacity>
- {/* Botão de medico */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('DoctorScreen')}>
-  <Text style={styles.buttonText}>Começar como médico</Text>
-</TouchableOpacity>
+
+      {/* Botão de médico */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('DoctorLoginScreen')} // Direciona para a tela de registro do Médico
+      >
+        <Text style={styles.buttonText}>Começar como médico</Text>
+      </TouchableOpacity>
 
     </View>
   );
@@ -34,9 +41,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   image: {
-    width: 300, // Ajuste conforme necessário
-    height: 200, // Ajuste conforme necessário
-    marginBottom: 120,
+    width: 300, // Largura da imagem
+    height: 200, // Altura da imagem
+    marginBottom: 120, // Espaçamento inferior
   },
   title: {
     fontSize: 24,

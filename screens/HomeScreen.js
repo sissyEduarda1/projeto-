@@ -7,7 +7,8 @@ export default function HomeScreen({ navigation }) {
       <Image source={require('../views/img/logo.png')} style={styles.logo} />
       <Button
         title="Iniciar"
-        onPress={() => navigation.navigate('Second')} // Navega para a "SecondScreen"
+        onPress={() => navigation.navigate('SecondScreen')}
+
         color="#28a745"
       />
     </View>

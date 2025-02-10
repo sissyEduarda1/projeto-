@@ -11,7 +11,7 @@ export default function SecondScreen({ navigation }) {
       </Text>
       <Button
         title="Próxima"
-        onPress={() => navigation.navigate('Third')}  // Navega para a terceira tela
+        onPress={() => navigation.navigate('ThirdScreen')}  // Navega para a terceira tela
         color="#28a745"
       />
     </View>
