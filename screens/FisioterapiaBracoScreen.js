@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import { Feather } from '@expo/vector-icons'; // Ícones de três barras
+import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 const FisioterapiaBracoScreen = () => {
@@ -36,6 +36,28 @@ const FisioterapiaBracoScreen = () => {
 
   const navigation = useNavigation();
 
+  const handleExercisePress = (exercise) => {
+    switch (exercise.title) {
+      case 'Alongamento de biceps em pé para a esquerda':
+        navigation.navigate('ExercicioDescricaoScreen');
+        break;
+      case 'Flexão e Rotação':
+        navigation.navigate('ExercicioDescricaoScreen1');
+        break;
+      case 'Arcos traseiros':
+        navigation.navigate('ExercicioDescricaoScreen2');
+        break;
+      case 'Mergulhos de triceps':
+        navigation.navigate('ExercicioDescricaoScreen4');
+        break;
+      case 'Alongamento de triceps para esquerda':
+        navigation.navigate('ExercicioDescricaoScreen3');
+        break;
+      default:
+        alert('Tela não disponível para este exercício!');
+    }
+  };   
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* Cabeçalho */}
@@ -53,14 +75,13 @@ const FisioterapiaBracoScreen = () => {
 
       {/* Lista de exercícios */}
       {exercises.map((exercise, index) => (
-        <View key={index} style={styles.exerciseCard}>
-          {/* Ícone de três barras */}
-          <Feather name="menu" size={24} color="#333" style={styles.icon} />
-          {/* Imagem do exercício */}
-          <Image source={exercise.image} style={styles.exerciseImage} />
-          {/* Nome do exercício */}
-          <Text style={styles.exerciseTitle}>{exercise.title}</Text>
-        </View>
+        <TouchableOpacity key={index} onPress={() => handleExercisePress(exercise)}>
+          <View style={styles.exerciseCard}>
+            <Feather name="menu" size={24} color="#333" style={styles.icon} />
+            <Image source={exercise.image} style={styles.exerciseImage} />
+            <Text style={styles.exerciseTitle}>{exercise.title}</Text>
+          </View>
+        </TouchableOpacity>
       ))}
 
       {/* Botão "Começar" */}
@@ -107,7 +128,7 @@ const styles = StyleSheet.create({
   exerciseCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 15, // Espaço entre os cartões
+    marginBottom: 15,
     backgroundColor: '#f9f9f9',
     padding: 10,
     borderRadius: 10,
@@ -122,13 +143,13 @@ const styles = StyleSheet.create({
   exerciseImage: {
     width: 80,
     height: 80,
-    marginRight: 15, // Espaço entre a imagem e o texto
+    marginRight: 15,
     borderRadius: 5,
   },
   exerciseTitle: {
     fontSize: 16,
     color: '#333',
-    flex: 1, // O texto ocupa o espaço restante
+    flex: 1,
   },
   startButton: {
     backgroundColor: '#0DB575',
